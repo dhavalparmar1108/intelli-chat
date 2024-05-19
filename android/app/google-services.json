@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "290393188843",
+    "project_id": "intelli-chat-bc846",
+    "storage_bucket": "intelli-chat-bc846.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:290393188843:android:cb2e684516b635a0d2d1ae",
+        "android_client_info": {
+          "package_name": "com.example.intelli_chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgob2RVmJGXT0rioYepkBqxjJnYvu_DRw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

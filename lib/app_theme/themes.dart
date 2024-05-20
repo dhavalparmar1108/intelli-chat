@@ -8,7 +8,7 @@ class AppThemes
   {
     return ThemeData(
         useMaterial3: true,
-        scaffoldBackgroundColor: Color(0xff3468eb),
+        scaffoldBackgroundColor: Colors.white,
         colorScheme:  ColorScheme.fromSeed(
           brightness: Brightness.light,
           seedColor: Colors.indigo,
@@ -17,12 +17,12 @@ class AppThemes
         fontFamily: 'Poppins',
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            textStyle: TextStyle(
-              color: Colors.black,
+            textStyle: const TextStyle(
+              color: Colors.white,
               fontSize: 17
             ),
-            backgroundColor: Color(0xff34c3eb),
-            side: BorderSide(
+            backgroundColor: const Color(0xff34c3eb),
+            side: const BorderSide(
                 width: 1
             ),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -40,17 +40,17 @@ class AppThemes
               color: Colors.black,
               fontWeight: FontWeight.w500
           ),
-          border: OutlineInputBorder(
+          border: const OutlineInputBorder(
               borderSide: BorderSide(
                   color: Colors.grey
               )
           ),
-          focusedBorder: OutlineInputBorder(
+          focusedBorder: const OutlineInputBorder(
               borderSide: BorderSide(
                   color: Colors.cyan
               )
           ),
-          enabledBorder: OutlineInputBorder(
+          enabledBorder: const OutlineInputBorder(
               borderSide: BorderSide(
                   color: Colors.grey
               )
@@ -64,7 +64,7 @@ class AppThemes
           textColor: Colors.white,
           iconColor: Colors.white,
           shape: RoundedRectangleBorder(
-            side: BorderSide(width: 1),
+            side: const BorderSide(width: 1),
             borderRadius: BorderRadius.circular(10),
           ),
         ),
@@ -79,7 +79,7 @@ class AppThemes
         ),
         textTheme: TextTheme(
             displayLarge : GoogleFonts.poppins(color: Colors.white, fontSize: 20),
-            bodyMedium: TextStyle(color: Colors.black , fontSize: 16),
+            bodyMedium: const TextStyle(color: Colors.black , fontSize: 16),
         )
     );
   }
@@ -95,32 +95,32 @@ class AppThemes
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
               backgroundColor: Colors.orange,
-              side: BorderSide(
+              side: const BorderSide(
                   width: 2
               )
           ),
         ),
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
             //backgroundColor: ColorConstants.darkModeThemeColor,
             foregroundColor: Colors.white,
             elevation: 0
         ),
-        inputDecorationTheme: InputDecorationTheme(
+        inputDecorationTheme: const InputDecorationTheme(
           //fillColor: ColorConstants.darkModeThemeColor,
-          labelStyle: const TextStyle(
+          labelStyle: TextStyle(
               color: Colors.grey
           ),
-          border: const OutlineInputBorder(
+          border: OutlineInputBorder(
               borderSide: BorderSide(
                   color: Colors.orange
               )
           ),
-          focusedBorder: const OutlineInputBorder(
+          focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(
                   color: Colors.orange
               )
           ),
-          enabledBorder: const OutlineInputBorder(
+          enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(
                   color: Colors.grey
               )
@@ -131,7 +131,7 @@ class AppThemes
           textColor: Colors.white,
           iconColor: Colors.white,
           shape: RoundedRectangleBorder(
-            side: BorderSide(width: 1),
+            side: const BorderSide(width: 1),
             borderRadius: BorderRadius.circular(10),
           ),
         ),

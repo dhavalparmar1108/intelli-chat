@@ -1,10 +1,22 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:intelli_chat/app_screens/auth_screens/log_in.dart';
 import 'package:intelli_chat/app_screens/auth_screens/sign_up.dart';
+import 'package:intelli_chat/app_screens/home.dart';
+import 'package:intelli_chat/app_screens/splash_screen.dart';
 import 'package:intelli_chat/app_theme/themes.dart';
+import 'package:intelli_chat/common_utilities/get_storage_utility/get_storage_functions.dart';
+import 'package:intelli_chat/common_utilities/helper_functions.dart';
+import 'package:intelli_chat/constants/constants.dart';
+import 'package:intelli_chat/cutsom_navigation/custom_navigation.dart';
 
 Future<void> main() async {
-  // await ScreenUtil.ensureScreenSize();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
@@ -34,8 +46,35 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  fetchUser() {
+    if(StorageService().readData(Constants.userId).toString().isEmpty)
+      {
+        Future.delayed(Duration(seconds: 2)).then((value) {
+          CustomNavigation.pushAndRemoveUntil(
+              context: context, className: Login());
+        });
+      }
+    else
+      {
+        Future.delayed(Duration(seconds: 2)).then((value) {
+            CustomNavigation.pushAndRemoveUntil(context: context, className: Home());
+         }
+        );
+      }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    HelperFunctions().initializeControllers();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      fetchUser();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SignUp();
+    return SplashScreen();
   }
 }

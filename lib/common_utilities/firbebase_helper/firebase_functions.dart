@@ -1,9 +1,12 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intelli_chat/common_utilities/get_storage_utility/get_storage_functions.dart';
+import 'package:intelli_chat/common_utilities/helper_functions.dart';
 import 'package:intelli_chat/constants/constants.dart';
+
 
 class FirebaseHelper
 {
@@ -32,6 +35,8 @@ class FirebaseHelper
           email: email,
           password: password,
         );
+        StaticConstants.userId = userCredential.user!.uid;
+        HelperFunctions().setUser(name, email, StaticConstants.userId);
         print("User registered successfully: ${userCredential.user?.uid}");
         return await addUserToFireStore(email , name, password, userCredential.user!.uid);
       }
@@ -58,10 +63,14 @@ class FirebaseHelper
     Future<bool> login(String email, String password)
     async {
       try {
-        final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        print("wait");
+        UserCredential credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
             email: email,
             password: password
         );
+        StaticConstants.userId = credential.user!.uid;
+        StorageService().saveData(Constants.userId , StaticConstants.userId);
+        await fetchUser(StaticConstants.userId);
         return true;
       } on FirebaseAuthException catch (e) {
         if (e.code == 'user-not-found') {
@@ -72,8 +81,22 @@ class FirebaseHelper
       }
       catch(e)
       {
-        print("Error occurred");
+        print("Error occurred" + e.toString());
       }
       return false;
     }
+
+    Future<bool> fetchUser(String userId) async{
+      try
+      {
+        DocumentSnapshot snapshot = await FirebaseFirestore.instance.collection('users').doc(StaticConstants.userId).get();
+        HelperFunctions().setUser(snapshot[Constants.name], snapshot[Constants.email], userId);
+      }
+      catch(e)
+      {
+        print("Error !" + e.toString());
+      }
+      return true;
+    }
+
 }

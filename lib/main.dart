@@ -47,16 +47,19 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   fetchUser() {
-    if(StorageService().readData(Constants.userId).toString().isEmpty)
+    String? userId = StorageService().readData(Constants.userId);
+    if(userId == null)
       {
-        Future.delayed(Duration(seconds: 2)).then((value) {
+        print("IF");
+        Future.delayed(Duration(seconds: 4)).then((value) {
           CustomNavigation.pushAndRemoveUntil(
               context: context, className: Login());
         });
       }
     else
       {
-        Future.delayed(Duration(seconds: 2)).then((value) {
+        StaticConstants.userId = userId;
+        Future.delayed(Duration(seconds: 4)).then((value) {
             CustomNavigation.pushAndRemoveUntil(context: context, className: Home());
          }
         );

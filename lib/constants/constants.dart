@@ -6,7 +6,7 @@ class Constants
   static String password = 'password';
 }
 
-class Static
+class StaticConstants
 {
   static String userId = "";
 }

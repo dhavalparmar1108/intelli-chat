@@ -26,6 +26,8 @@ class _LoginState extends State<Login> {
   late LoginPasswordController passwordController;
   late LoginLoadingController loadingController;
 
+  bool isPasswordVisible = false;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -68,6 +70,7 @@ class _LoginState extends State<Login> {
                   ),
                   SizedBox(height: 10.h),
                   TextFormField(
+                    obscureText: !isPasswordVisible,
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         fontWeight: FontWeight.w500
                     ),
@@ -77,8 +80,21 @@ class _LoginState extends State<Login> {
                     validator: (String? value) {
                       return (value == null && value!.isEmpty) ? 'Please enter password' : null;
                     },
-                    decoration: const InputDecoration(
-                        hintText: "Password"
+                    decoration: InputDecoration(
+                        hintText: "Password",
+                        suffixIcon: isPasswordVisible ? IconButton(
+                            onPressed: (){
+                              setState(() {
+                                isPasswordVisible = !isPasswordVisible;
+                              });
+                            },
+                            icon : Icon(Icons.visibility)) : IconButton(
+                            onPressed: (){
+                              setState(() {
+                                isPasswordVisible = !isPasswordVisible;
+                              });
+                            },
+                            icon : Icon(Icons.visibility_off))
                     ),
                   ),
                   SizedBox(height: 10.h),
@@ -86,7 +102,7 @@ class _LoginState extends State<Login> {
                     FocusScope.of(context).unfocus();
                     loadingController.isLoading.value = true;
                     await Future.delayed(Duration(seconds: 3));
-                    bool x =await FirebaseHelper().login(emailController.email.value, passwordController.password.value);
+                    bool x = await FirebaseHelper().login(emailController.email.value, passwordController.password.value);
                     if(x)
                     {
                       CustomNavigation.pushAndRemoveUntil(context: context, className: Home());

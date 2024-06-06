@@ -15,6 +15,16 @@ class AppThemes
         ),
         brightness: Brightness.light,
         fontFamily: 'Poppins',
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          selectedIconTheme: IconThemeData(
+            color: Colors.blueGrey
+          ),
+          unselectedIconTheme: IconThemeData(
+              color: Colors.blueGrey
+          ),
+          selectedItemColor: Colors.blueGrey,
+          unselectedItemColor: Colors.blueGrey,
+        ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             textStyle: const TextStyle(
@@ -47,12 +57,7 @@ class AppThemes
           ),
           focusedBorder: const OutlineInputBorder(
               borderSide: BorderSide(
-                  color: Colors.cyan
-              )
-          ),
-          enabledBorder: const OutlineInputBorder(
-              borderSide: BorderSide(
-                  color: Colors.grey
+                  color: Colors.black
               )
           ),
         ),
@@ -60,13 +65,11 @@ class AppThemes
           labelColor: Colors.blue,
         ),
         listTileTheme: ListTileThemeData(
-          tileColor: Colors.orange,
-          textColor: Colors.white,
-          iconColor: Colors.white,
-          shape: RoundedRectangleBorder(
-            side: const BorderSide(width: 1),
-            borderRadius: BorderRadius.circular(10),
-          ),
+          iconColor: Colors.indigo,
+          // shape: RoundedRectangleBorder(
+          //   side: const BorderSide(width: 0),
+          //   borderRadius: BorderRadius.circular(10),
+          // ),
         ),
         cardTheme: CardTheme(
           color: Colors.blueGrey,
@@ -88,20 +91,26 @@ class AppThemes
   {
     return ThemeData(
         useMaterial3: true,
-        //scaffoldBackgroundColor: ColorConstants.darkModeThemeColor,
-        //backgroundColor: Colors.orangeAccent,
-        brightness: Brightness.dark,
         fontFamily: 'Poppins',
+        colorScheme:  ColorScheme.fromSeed(
+          brightness: Brightness.dark,
+          seedColor: Colors.deepPurpleAccent,
+        ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.orange,
-              side: const BorderSide(
-                  width: 2
-              )
+            textStyle: const TextStyle(
+                color: Colors.white,
+                fontSize: 17
+            ),
+            backgroundColor: const Color(0xff34c3eb),
+            side: const BorderSide(
+                width: 1
+            ),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           ),
         ),
         appBarTheme: const AppBarTheme(
-            //backgroundColor: ColorConstants.darkModeThemeColor,
+            //backgroundColor: Colors.black,
             foregroundColor: Colors.white,
             elevation: 0
         ),
@@ -117,7 +126,8 @@ class AppThemes
           ),
           focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(
-                  color: Colors.orange
+                  color: Colors.grey,
+                  width: 2
               )
           ),
           enabledBorder: OutlineInputBorder(
@@ -127,13 +137,8 @@ class AppThemes
           ),
         ),
         listTileTheme: ListTileThemeData(
-          tileColor: Colors.orange,
           textColor: Colors.white,
-          iconColor: Colors.white,
-          shape: RoundedRectangleBorder(
-            side: const BorderSide(width: 1),
-            borderRadius: BorderRadius.circular(10),
-          ),
+          iconColor: Colors.white
         ),
         cardTheme: CardTheme(
           color: Colors.blueGrey,

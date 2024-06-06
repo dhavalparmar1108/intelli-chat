@@ -17,4 +17,9 @@ class StorageService {
   void removeData(String key) {
     storage.remove(key);
   }
+
+  // Remove data from storage
+  Future<void> erase() async{
+    return await storage.erase();
+  }
 }

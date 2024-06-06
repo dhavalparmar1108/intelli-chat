@@ -7,7 +7,6 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:intelli_chat/app_screens/home.dart';
 import 'package:intelli_chat/common_utilities/firbebase_helper/firebase_functions.dart';
-import 'package:intelli_chat/common_utilities/get_storage_utility/get_storage_functions.dart';
 import 'package:intelli_chat/cutsom_navigation/custom_navigation.dart';
 import 'package:intelli_chat/get_controllers/sign_up_controllers/email_controller.dart';
 import 'package:intelli_chat/get_controllers/sign_up_controllers/loading_controller.dart';
@@ -41,10 +40,10 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     SizeConstants.setScreenAwareConstant(context);
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.indigo,
-        body: Stack(
+    return Scaffold(
+      backgroundColor: Colors.indigo,
+      body: SafeArea(
+        child: Stack(
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),

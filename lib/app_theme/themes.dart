@@ -12,6 +12,7 @@ class AppThemes
         colorScheme:  ColorScheme.fromSeed(
           brightness: Brightness.light,
           seedColor: Colors.indigo,
+          primaryContainer: Colors.white
         ),
         brightness: Brightness.light,
         fontFamily: 'Poppins',
@@ -95,6 +96,7 @@ class AppThemes
         colorScheme:  ColorScheme.fromSeed(
           brightness: Brightness.dark,
           seedColor: Colors.deepPurpleAccent,
+          primaryContainer: Colors.black
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(

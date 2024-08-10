@@ -27,9 +27,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Commissioning',
+      title: 'Intllie',
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.dark,
       theme: AppThemes().lightTheme(),
       darkTheme: AppThemes().darkTheme(),
       home: const MyHomePage(title: 'Intelli-Chat',),

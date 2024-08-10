@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intelli_chat/app_screens/chat_screen.dart';
+import 'package:intelli_chat/cutsom_navigation/custom_navigation.dart';
 import 'package:intelli_chat/screen_util/screen_util.dart';
 
 class SearchUser extends StatefulWidget {
@@ -14,6 +16,7 @@ class SearchUser extends StatefulWidget {
 class _SearchUserState extends State<SearchUser> {
   
   QuerySnapshot? searchedUsers;
+
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +54,9 @@ class _SearchUserState extends State<SearchUser> {
                 shrinkWrap: true,
                 itemBuilder: (context , idx){
                 return ListTile(
+                  onTap: (){
+                    CustomNavigation.push(context: context, className: ChatScreen(UserId: searchedUsers!.docs.elementAt(idx).id));
+                  },
                   leading: CircleAvatar(
                     child: Icon(Icons.person),
                   ),
